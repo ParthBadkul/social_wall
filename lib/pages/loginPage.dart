@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:wall/componenets/button.dart';
@@ -26,6 +28,23 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       reverseDuration: Duration(seconds: 2),
     );
     _controller.forward();
+  }
+
+  Future<void> login() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(e.code),
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -96,7 +115,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   horizontal: 18.0,
                   vertical: 15,
                 ),
-                child: Mybutton(onTap: () {}, text: 'Sign In'),
+                child: Mybutton(onTap: login, text: 'Sign In'),
               ),
               const SizedBox(
                 height: 10,

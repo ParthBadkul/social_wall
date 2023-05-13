@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "233853758643",
+    "project_id": "socialwall-30594",
+    "storage_bucket": "socialwall-30594.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233853758643:android:e9f4264bebdf7f4f6bd4c6",
+        "android_client_info": {
+          "package_name": "com.example.wall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233853758643-4kokm9fe93elsgajbju4manstiqi834r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8YZ9tWym12FPIKXoQaS280OuF7RSN6qU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233853758643-4kokm9fe93elsgajbju4manstiqi834r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

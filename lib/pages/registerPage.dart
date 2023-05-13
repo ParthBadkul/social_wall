@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,6 +30,33 @@ class _RegisterPageState extends State<RegisterPage>
       reverseDuration: Duration(seconds: 2),
     );
     _controller.forward();
+  }
+
+  Future<void> signUp() async {
+    if (passwordController.text == confirmpasswordController.text) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text);
+      } on FirebaseAuthException catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(e.code),
+            );
+          },
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Passwords don't match !"),
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -113,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage>
                   horizontal: 18.0,
                   vertical: 15,
                 ),
-                child: Mybutton(onTap: () {}, text: 'Register Now'),
+                child: Mybutton(onTap: signUp, text: 'Register Now'),
               ),
               const SizedBox(
                 height: 10,
